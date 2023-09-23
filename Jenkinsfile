@@ -22,7 +22,8 @@ pipeline {
         }
         stage('Deploying application using Ansible') {
             steps {
-                ansiblePlaybook inventory: '/opt/build/workspace/zenda_test/ansible-k8s/host.yml', 
+                ansiblePlaybook extras: '-e image_id=$image_build',
+                inventory: '/opt/build/workspace/zenda_test/ansible-k8s/host.yml', 
                 playbook: '/opt/build/workspace/zenda_test/ansible-k8s/tasks/main.yml'
             }
         }
