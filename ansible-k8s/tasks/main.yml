@@ -10,4 +10,4 @@
          dest: /opt/nodejs.yml
 
     - name: deploy application      
-      command: kubectl apply -f /opt/nodejs.yml 
+      command: /usr/local/bin/kubectl apply -f /opt/nodejs.yml 
