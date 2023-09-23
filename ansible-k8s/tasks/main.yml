@@ -6,7 +6,7 @@
   tasks:
     - name: copy kubernetes latest definition file 
       template:
-         src: nodejs.yml.j2
+         src: /opt/build/workspace/zenda_test/ansible-k8s/templates/nodejs.yml.j2
          dest: /opt/nodejs.yml
 
     - name: deploy application      
