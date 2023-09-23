@@ -4,9 +4,6 @@ pipeline {
             label 'ansible01'
         }
     }
-//    environment {
-//        image_tag = $image_build
-//    }
     stages {
         stage('fetch latest code from git') {
             steps {
@@ -21,6 +18,12 @@ pipeline {
                     sh "docker push pranavmurali1994/nodejs:$image_build"
                 }
                 
+            }
+        }
+        stage('Deploying application using Ansible') {
+            steps {
+                ansiblePlaybook inventory: '/opt/build/workspace/zenda_test/ansible-k8s/host.yml', 
+                playbook: '/opt/build/workspace/zenda_test/ansible-k8s/tasks/main.yml'
             }
         }
     }
