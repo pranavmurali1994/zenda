@@ -1,0 +1,13 @@
+--- 
+- hosts: eks
+  become: True 
+  gather_facts: True
+
+  tasks:
+    - name: copy kubernetes latest definition file 
+      template:
+         src: nodejs.yml.j2
+         dest: /opt/nodejs.yml
+
+    - name: deploy application      
+      command: kubectl apply -f /opt/nodejs.yml 
