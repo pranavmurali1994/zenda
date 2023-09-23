@@ -5,9 +5,9 @@ pipeline {
         }
     }
     stages {
-        stage('mkdir') {
+        stage('fetch latest code from git') {
             steps {
-                sh 'mkdir /home/jenkins'
+              git branch: 'main', url: 'https://github.com/pranavmurali1994/zenda.git'
             }
         }
     }
